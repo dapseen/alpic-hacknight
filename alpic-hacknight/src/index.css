@@ -1,0 +1,326 @@
+:root {
+  color-scheme: light dark;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia,
+    serif;
+  --bg: linear-gradient(155deg, #fbf7ef 0%, #eef3f7 100%);
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-strong: rgba(255, 255, 255, 0.94);
+  --border: rgba(22, 33, 52, 0.14);
+  --ink: #172036;
+  --muted: #61708b;
+  --accent: #0c6d7c;
+  --accent-soft: rgba(12, 109, 124, 0.12);
+  --success: #146c43;
+  --warning: #8d5f08;
+  --shadow: 0 18px 48px rgba(23, 32, 54, 0.12);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --font-ui: "Avenir Next", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+}
+
+.theme-dark {
+  --bg: linear-gradient(160deg, #152033 0%, #101925 100%);
+  --panel: rgba(16, 25, 37, 0.86);
+  --panel-strong: rgba(18, 29, 43, 0.96);
+  --border: rgba(226, 232, 240, 0.12);
+  --ink: #f4f7fb;
+  --muted: #a1b1c8;
+  --accent: #7be2cf;
+  --accent-soft: rgba(123, 226, 207, 0.16);
+  --success: #83d69c;
+  --warning: #f3ca6e;
+  --shadow: 0 18px 48px rgba(2, 6, 23, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  color: var(--ink);
+  background: transparent;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.assistant-shell {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.45), transparent 28%),
+    var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.assistant-shell.fullscreen {
+  min-height: 100vh;
+  border-radius: 0;
+  padding: 28px;
+}
+
+.assistant-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.assistant-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.assistant-title {
+  margin: 0;
+  font-family: inherit;
+  font-size: 30px;
+  line-height: 1.05;
+}
+
+.assistant-subtitle,
+.assistant-meta,
+.assistant-empty,
+.assistant-warning,
+.assistant-helper {
+  color: var(--muted);
+}
+
+.assistant-subtitle,
+.assistant-helper,
+.assistant-warning {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.assistant-warning {
+  color: var(--warning);
+}
+
+.assistant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.assistant-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.assistant-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.assistant-section-title {
+  margin: 0;
+  font-size: 17px;
+}
+
+.assistant-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.assistant-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.assistant-item {
+  border-radius: var(--radius-md);
+  background: var(--panel-strong);
+  border: 1px solid var(--border);
+  padding: 12px;
+}
+
+.assistant-item-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.assistant-item-meta,
+.assistant-item-copy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.assistant-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.assistant-button {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    opacity 140ms ease,
+    background-color 140ms ease;
+}
+
+.assistant-button:hover {
+  transform: translateY(-1px);
+}
+
+.assistant-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  transform: none;
+}
+
+.assistant-button.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.assistant-button.secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+
+.assistant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.assistant-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.assistant-input,
+.assistant-textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px 14px;
+  color: var(--ink);
+  background: var(--panel-strong);
+}
+
+.assistant-textarea {
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.assistant-confirmation {
+  background: var(--panel-strong);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+
+.assistant-success {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.assistant-slot-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.assistant-slot {
+  width: 100%;
+  text-align: left;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--panel-strong);
+  color: var(--ink);
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.assistant-slot.selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.assistant-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.assistant-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.assistant-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.assistant-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .assistant-shell {
+    padding: 14px;
+  }
+
+  .assistant-title {
+    font-size: 24px;
+  }
+
+  .assistant-topbar {
+    flex-direction: column;
+  }
+}
